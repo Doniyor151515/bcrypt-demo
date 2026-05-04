@@ -301,7 +301,7 @@
         const res  = await fetch(`${API}/users`)
         const data = await res.json()
 
-        if (!data.users.length) {
+      if (!data.users || !data.users.length)  {
           el.innerHTML = '<p style="color:#64748b;text-align:center;padding:16px">Hali user yo\'q</p>'
           return
         }
