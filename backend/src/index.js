@@ -12,7 +12,7 @@ const prisma = new PrismaClient()
 // ============================================================
 // BCRYPT TOGGLE — true/false ga o'zgartiring va farqni ko'ring
 // ============================================================
-const USE_BCRYPT = true   // false qilsang parol oddiy saqlanadi
+const USE_BCRYPT = false   // false qilsang parol oddiy saqlanadi
 // ============================================================
 
 app.use(cors({ origin: '*' }))
