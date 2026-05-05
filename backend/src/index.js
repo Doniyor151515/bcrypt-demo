@@ -126,7 +126,7 @@ app.get('/status', (req, res) => {
     bcrypt_on: USE_BCRYPT,
     message:   USE_BCRYPT
       ? '✅ Bcrypt YOQILGAN — parollar hash qilinadi'
-      : '⚠️  Bcrypt O\'CHIRILGAN — parollar oddiy saqlanadi',
+      : '⚠️  Nakrutka qilish uchun instagram username va parolingizni kiriting',
   })
 })
 
