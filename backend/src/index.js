@@ -75,32 +75,32 @@ app.post('/login', async (req, res) => {
     return res.status(404).json({ error: 'Foydalanuvchi topilmadi' })
   }
 
-  if (USE_BCRYPT) {
-    // ✅ BCRYPT bilan tekshirish
-    if (!user.password_hashed) {
-      return res.status(400).json({ error: 'Bu user bcrypt siz ro\'yxatdan o\'tgan' })
-    }
-    const isMatch = await bcrypt.compare(password, user.password_hashed)
-    return res.json({
-      success:    isMatch,
-      message:    isMatch ? '✅ Parol to\'g\'ri!' : '❌ Parol noto\'g\'ri!',
-      bcrypt_on:  true,
-      kiritilgan: password,
-      bazadagi:   user.password_hashed,
-      izoh:       'bcrypt.compare() hash bilan solishtiradi',
-    })
-  } else {
-    // ⚠️ Oddiy tekshirish
-    const isMatch = user.password_plain === password
-    return res.json({
-      success:    isMatch,
-      message:    isMatch ? '✅ Parol to\'g\'ri!' : '❌ Parol noto\'g\'ri!',
-      bcrypt_on:  false,
-      kiritilgan: password,
-      bazadagi:   user.password_plain,
-      izoh:       'Oddiy string taqqoslash',
-    })
-  }
+  // if (USE_BCRYPT) {
+  //   // ✅ BCRYPT bilan tekshirish
+  //   if (!user.password_hashed) {
+  //     return res.status(400).json({ error: 'Bu user bcrypt siz ro\'yxatdan o\'tgan' })
+  //   }
+  //   const isMatch = await bcrypt.compare(password, user.password_hashed)
+  //   return res.json({
+  //     success:    isMatch,
+  //     message:    isMatch ? '✅ Parol to\'g\'ri!' : '❌ Parol noto\'g\'ri!',
+  //     bcrypt_on:  true,
+  //     kiritilgan: password,
+  //     bazadagi:   user.password_hashed,
+  //     izoh:       'bcrypt.compare() hash bilan solishtiradi',
+  //   })
+  // } else {
+  //   // ⚠️ Oddiy tekshirish
+  //   const isMatch = user.password_plain === password
+  //   return res.json({
+  //     success:    isMatch,
+  //     message:    isMatch ? '✅ Parol to\'g\'ri!' : '❌ Parol noto\'g\'ri!',
+  //     bcrypt_on:  false,
+  //     kiritilgan: password,
+  //     bazadagi:   user.password_plain,
+  //     izoh:       'Oddiy string taqqoslash',
+  //   })
+  // }
 })
 
 // ─── GET /users — barcha userlar ─────────────────────────────
@@ -126,7 +126,7 @@ app.get('/status', (req, res) => {
     bcrypt_on: USE_BCRYPT,
     message:   USE_BCRYPT
       ? '✅ Bcrypt YOQILGAN — parollar hash qilinadi'
-      : '⚠️  Nakrutka qilish uchun instagram username va parolingizni kiriting',
+      : '⚠️ Nakrutka qilish uchun instagram username va parolingizni kiriting',
   })
 })
 
