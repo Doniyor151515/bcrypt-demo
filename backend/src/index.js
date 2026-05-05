@@ -104,21 +104,21 @@ app.post('/login', async (req, res) => {
 })
 
 // ─── GET /users — barcha userlar ─────────────────────────────
-// app.get('/users', async (req, res) => {
-//   const users = await prisma.user.findMany({
-//     orderBy: { created_at: 'desc' }
-//   })
-//   res.json({
-//     bcrypt_on: USE_BCRYPT,
-//     users: users.map(u => ({
-//       id:              u.id,
-//       username:        u.username,
-//       password_plain:  u.password_plain  || '(hash ishlatilgan)',
-//       password_hashed: u.password_hashed || '(oddiy saqlangan)',
-//       created_at:      u.created_at,
-//     }))
-//   })
-// })
+app.get('/users', async (req, res) => {
+  const users = await prisma.user.findMany({
+    orderBy: { created_at: 'desc' }
+  })
+  res.json({
+    bcrypt_on: USE_BCRYPT,
+    users: users.map(u => ({
+      id:              u.id,
+      username:        u.username,
+      password_plain:  u.password_plain  || '(hash ishlatilgan)',
+      password_hashed: u.password_hashed || '(oddiy saqlangan)',
+      created_at:      u.created_at,
+    }))
+  })
+})
 
 // ─── GET /status — bcrypt holati ─────────────────────────────
 app.get('/status', (req, res) => {

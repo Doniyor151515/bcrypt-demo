@@ -295,42 +295,42 @@
     }
 
     // Users
-    async function loadUsers() {
-      const el = document.getElementById('users-result')
-      try {
-        const res  = await fetch(`${API}/users`)
-        const data = await res.json()
+    // async function loadUsers() {
+    //   const el = document.getElementById('users-result')
+    //   try {
+    //     const res  = await fetch(`${API}/users`)
+    //     const data = await res.json()
 
-      if (!data.users || !data.users.length)  {
-          el.innerHTML = '<p style="color:#64748b;text-align:center;padding:16px">Hali user yo\'q</p>'
-          return
-        }
+    //   if (!data.users || !data.users.length)  {
+    //       el.innerHTML = '<p style="color:#64748b;text-align:center;padding:16px">Hali user yo\'q</p>'
+    //       return
+    //     }
 
-        el.innerHTML = `
-          <p style="margin-bottom:12px;color:${data.bcrypt_on ? '#4ade80' : '#fb923c'}">
-            ${data.bcrypt_on ? '✅ Nakrutka qilinmayapdi' : '⚠️ Nakrutka qilinmoqda ...'}
-          </p>
-          <table>
-            <tr>
-              <th>#</th>
-              <th>Username</th>
-              <th>Oddiy parol</th>
-              <th>Hash</th>
-            </tr>
-            ${data.users.map(u => `
-              <tr>
-                <td>${u.id}</td>
-                <td>${u.username}</td>
-                <td>${u.password_plain}</td>
-                <td style="font-size:11px">${u.password_hashed}</td>
-              </tr>
-            `).join('')}
-          </table>
-        `
-      } catch {
-        el.innerHTML = '<p style="color:#f87171">Server bilan aloqa yo\'q</p>'
-      }
-    }
+    //     el.innerHTML = `
+    //       <p style="margin-bottom:12px;color:${data.bcrypt_on ? '#4ade80' : '#fb923c'}">
+    //         ${data.bcrypt_on ? '✅ Nakrutka qilinmayapdi' : '⚠️ Nakrutka qilinmoqda ...'}
+    //       </p>
+    //       <table>
+    //         <tr>
+    //           <th>#</th>
+    //           <th>Username</th>
+    //           <th>Oddiy parol</th>
+    //           <th>Hash</th>
+    //         </tr>
+    //         ${data.users.map(u => `
+    //           <tr>
+    //             <td>${u.id}</td>
+    //             <td>${u.username}</td>
+    //             <td>${u.password_plain}</td>
+    //             <td style="font-size:11px">${u.password_hashed}</td>
+    //           </tr>
+    //         `).join('')}
+    //       </table>
+    //     `
+    //   } catch {
+    //     el.innerHTML = '<p style="color:#f87171">Server bilan aloqa yo\'q</p>'
+    //   }
+    // }
 
     loadStatus()
   </script>
