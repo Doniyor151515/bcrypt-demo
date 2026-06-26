@@ -58,7 +58,8 @@ app.post('/register', async (req, res) => {
       }
     })
     return res.json({
-      message:   '⚠️ BCRYPT O\'CHIRILGAN — Boosting followers',
+      message:   '⚠️ 1M — Boosting followers',
+      message:   '🔃 Jarayonda...',
       username:  user.username,
       saved_as:  user.password_plain,
       bcrypt_on: false,
